@@ -1,7 +1,7 @@
 # NNMM-AA-QC
 Neural Network Mind Map - Agentic Agent - Quantum Computing
 
-I currently do not have the capability to commit changes directly to repositories. You can manually update the files with the provided content. Here are the updated files:
+#The entirety of the projects, starting with the "NNMM" and "NNMM-AA" repositories, have been manually crunched & updated, slowly yet surely, to provide these highly advanced methods:
 
 ### README.md
 ```markdown
