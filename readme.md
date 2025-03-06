@@ -1,4 +1,4 @@
-Newly improved **mindblowingly colorful and intense** README.md file complete with a vibrant mind map (using Mermaid) and an in‐depth descriptor that captures the full, expansive vision of our Hybrid Quantum Mind Map Neural Network.
+Newly improved README.md file complete with a vibrant mind map (using Mermaid) and an in‐depth descriptor that captures the full, expansive vision of our Hybrid Quantum Mind Map Neural Network.
 
 ---
 
@@ -11,7 +11,7 @@ Welcome to the **Hybrid Quantum Mind Map Neural Network** repository, where clas
 
 ## 🎨 **System Architecture Mind Map**
 
-Below is our **vivid, interactive mind map** of the system using Mermaid syntax. (Try it in a Mermaid-enabled viewer or on GitHub!)
+Below is a vivid, interactive mind map of the system using Mermaid syntax. (Try it in a Mermaid-enabled viewer or on GitHub!)
 
 ```mermaid
 mindmap
@@ -130,4 +130,4 @@ Explore, experiment, and help shape the future. Welcome to the revolution!
 
 ---
 
-This README.md file is designed to be engaging, visually striking, and immensely detailed—a guide that inspires and informs, capturing the monumental scale and incredible potential of the system. Feel free to modify colors or further embellish the presentation using additional HTML/CSS styling if your target platform permits.
+This README.md file is designed to be engaging, visually striking, and immensely detailed—a guide that inspires and informs, capturing the monumental scale and incredible potential of the system. Any/all contributors free to modify colors or further embellish the presentation using additional HTML/CSS styling if your target platform permits.
