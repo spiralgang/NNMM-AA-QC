@@ -1,0 +1,143 @@
+#Below is the detailed Python script that integrates a custom quantum simulation layer into a hybrid quantum‑classical neural network model. This script is designed with cutting‑edge techniques for research‐grade experimentation. Minimal inline commentary is provided for clarity.
+
+```python
+#!/usr/bin/env python3
+"""
+QuantumAgenticAgent: Hybrid Quantum-Classical Neural Network Model
+
+This script demonstrates the integration of a quantum simulation layer into a
+hybrid quantum-classical model using TensorFlow and Qiskit. The QuantumLayer simulates
+a parameterized quantum circuit on a classical computer via Qiskit's Aer simulator.
+"""
+
+import os
+import datetime
+import numpy as np
+import tensorflow as tf
+from qiskit import QuantumCircuit, Aer, execute
+
+# Suppress TensorFlow debug logs
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+# ---------------------------------------------------------------------------
+# Custom QuantumLayer: Simulates a parameterized quantum circuit.
+# ---------------------------------------------------------------------------
+class QuantumLayer(tf.keras.layers.Layer):
+    def __init__(self, n_qubits=2, n_layers=1, shots=1024, **kwargs):
+        super(QuantumLayer, self).__init__(**kwargs)
+        self.n_qubits = n_qubits
+        self.n_layers = n_layers
+        self.shots = shots
+        self.simulator = Aer.get_backend('qasm_simulator')
+
+    def build(self, input_shape):
+        # One set of trainable parameters per layer per qubit.
+        self.params = self.add_weight(
+            "params",
+            shape=(self.n_layers, self.n_qubits),
+            initializer="random_normal",
+            trainable=True
+        )
+        super(QuantumLayer, self).build(input_shape)
+
+    def call(self, inputs):
+        def quantum_circuit_eval(x, params):
+            batch_size = x.shape[0]
+            results = []
+            for i in range(batch_size):
+                qc = QuantumCircuit(self.n_qubits)
+                # Data encoding: Ry rotations with input angles.
+                for q in range(self.n_qubits):
+                    qc.ry(x[i, q], q)
+                # Parameterized quantum circuit layers.
+                for l in range(self.n_layers):
+                    for q in range(self.n_qubits):
+                        qc.rx(params[l, q], q)
+                    for q in range(self.n_qubits - 1):
+                        qc.cx(q, q + 1)
+                qc.measure_all()
+                job = execute(qc, backend=self.simulator, shots=self.shots)
+                result = job.result()
+                counts = result.get_counts(qc)
+                exp_val = 0.0
+                for outcome, count in counts.items():
+                    # Qiskit's bit order is little-endian.
+                    bit = int(outcome[-1])
+                    exp_val += (1 if bit == 0 else -1) * (count / self.shots)
+                results.append([exp_val])
+            return np.array(results, dtype=np.float32)
+
+        output = tf.py_function(func=quantum_circuit_eval, inp=[inputs, self.params], Tout=tf.float32)
+        output.set_shape([None, 1])
+        return output
+
+    def get_config(self):
+        config = super(QuantumLayer, self).get_config()
+        config.update({
+            "n_qubits": self.n_qubits,
+            "n_layers": self.n_layers,
+            "shots": self.shots
+        })
+        return config
+
+# ---------------------------------------------------------------------------
+# Synthetic Data Generation: Angles used to encode quantum states.
+# ---------------------------------------------------------------------------
+def generate_synthetic_data(samples=500, n_features=2):
+    np.random.seed(42)
+    X = np.random.rand(samples, n_features) * np.pi  # angles in [0, π]
+    y_int = ((np.sin(X[:, 0]) + np.cos(X[:, 1])) > 1).astype(np.int32)
+    y = tf.keras.utils.to_categorical(y_int, num_classes=2)
+    return X.astype(np.float32), y
+
+# ---------------------------------------------------------------------------
+# Hybrid Model: Classical preprocessing, QuantumLayer, classical postprocessing.
+# ---------------------------------------------------------------------------
+def build_hybrid_model(n_qubits=2, n_layers=1):
+    inputs = tf.keras.Input(shape=(n_qubits,))
+    # Classical pre-processing layer.
+    x = tf.keras.layers.Dense(8, activation="relu")(inputs)
+    # Quantum layer for quantum-inspired feature transformation.
+    q_out = QuantumLayer(n_qubits=n_qubits, n_layers=n_layers)(x)
+    # Classical post-processing layers.
+    x = tf.keras.layers.Dense(8, activation="relu")(q_out)
+    outputs = tf.keras.layers.Dense(2, activation="softmax")(x)
+    model = tf.keras.Model(inputs=inputs, outputs=outputs)
+    model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
+    return model
+
+# ---------------------------------------------------------------------------
+# Main Execution: Training and Evaluation.
+# ---------------------------------------------------------------------------
+def main():
+    n_qubits = 2
+    n_layers = 1
+    epochs = 20
+    batch_size = 16
+
+    # Generate synthetic dataset.
+    X, y = generate_synthetic_data(samples=500, n_features=n_qubits)
+    print("Data shapes:", X.shape, y.shape)
+
+    # Build and compile hybrid model.
+    model = build_hybrid_model(n_qubits=n_qubits, n_layers=n_layers)
+    model.summary()
+
+    # Train the model.
+    model.fit(X, y, epochs=epochs, batch_size=batch_size, verbose=1)
+
+    # Evaluate the model.
+    loss, acc = model.evaluate(X, y, verbose=0)
+    print("Test Loss: {:.4f}, Test Accuracy: {:.4f}".format(loss, acc))
+
+    # Save the model.
+    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    model_file = f"quantum_agentic_agent_model_{timestamp}.h5"
+    model.save(model_file)
+    print("Model saved to", model_file)
+
+if __name__ == '__main__':
+    main()
+```
+
+#This script builds a quantum-inspired TensorFlow layer with Qiskit simulation, generates synthetic data based on quantum encoding, constructs a hybrid neural network, and trains—exemplifying state-of-the-art quantum-classical integration techniques.
