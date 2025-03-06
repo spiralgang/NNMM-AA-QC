@@ -1,7 +1,7 @@
 # NNMM-AA-QC
 Neural Network Mind Map - Agentic Agent - Quantum Computing
 
-#The entirety of the projects, starting with the "NNMM" and "NNMM-AA" repositories, have been manually crunched & updated, slowly yet surely, to provide these highly advanced methods:
+# The entirety of the projects, starting with the "NNMM" and "NNMM-AA" repositories, have been manually crunched & updated, slowly yet surely, to provide these highly advanced methods:
 
 ### README.md
 ```markdown
@@ -73,4 +73,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Special thanks to all contributors and collaborators.
 - Listed: A handful of additional resources, tutorials, and/or contributors that were central bases to these technological advancements.
 ```
-@qualcomm @microsoft @github @huggingface @Nlabs @ sgneuronlabs.space @spiralgang 
+@qualcomm @microsoft @github @huggingface @Nlabs @sgneuronlabs.space @spiralgang 
