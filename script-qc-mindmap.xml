@@ -1,6 +1,6 @@
-Below is an extremely comprehensive Python script that extends our quantum‐inspired neural network to include a robust, dynamic “mind map” data loop. In this design, we simulate a database‐inspired mind map where each sample is composed of several node features. Instead of processing linearly, the pipeline “branches” each node into multiple parallel (exponential) quantum‐inspired processes that are then aggregated for downstream classical processing. The code uses Qiskit for the quantum simulation and TensorFlow’s functional API (along with tf.map_fn and TimeDistributed layers) to emulate a world‑class, research‑grade dynamic quantum database–inspired model.
+#Below is an extremely comprehensive Python script that extends our quantum‐inspired neural network to include a robust, dynamic “mind map” data loop. In this design, we simulate a database‐inspired mind map where each sample is composed of several node features. Instead of processing linearly, the pipeline “branches” each node into multiple parallel (exponential) quantum‐inspired processes that are then aggregated for downstream classical processing. The code uses Qiskit for the quantum simulation and TensorFlow’s functional API (along with tf.map_fn and TimeDistributed layers) to emulate a world‑class, research‑grade dynamic quantum database–inspired model.
 
-Below is the full code script:
+#Below is the full code script:
 
 ---
 
