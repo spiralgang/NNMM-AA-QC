@@ -1,0 +1,132 @@
++-----------------------------------------------------------------------------------------------------------------------+
+|                                    HYBRID QUANTUM MIND MAP NEURAL NETWORK MODEL                                   |
+|                        (Exponential, Database-Inspired & Quantum-Classical Fusion Architecture)                     |
++-----------------------------------------------------------------------------------------------------------------------+
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                                                                                             │
+             │     [DATA GENERATION: MIND MAP DATA]                                                        │
+             │     ┌─────────────────────────────────────────────────────────────────────────┐         │
+             │     │ - Synthetic Data Generation                                           │         │
+             │     │    • Random angles ∈ [0, π]                                           │         │
+             │     │    • Shape: (samples, num_nodes, node_features)                       │         │
+             │     │    • Nonlinear label assignment (e.g., aggregate sin/cos functions)   │         │
+             │     └─────────────────────────────────────────────────────────────────────────┘         │
+             │           │                                                                              │
+             │           └─────────────┐                                                                │
+             │                         │                                                                │
+             │                         ▼                                                                │
+             │             [DATABASE-INSPIRED NODE STRUCTURE]                                               │
+             │             ┌───────────────────────────────────────┐                                        │
+             │             │ • Each sample = several independent    │                                        │
+             │             │   nodes representing features            │                                        │
+             │             │ • Hierarchical interdependencies         │                                        │
+             │             └───────────────────────────────────────┘                                        │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                              [PREPROCESSING]                                                 │
+             │                              ┌─────────────────────────────────────────────────┐         │
+             │                              │ • Input Layer                                  │         │
+             │                              │      - TF Input: (num_nodes, node_features)      │         │
+             │                              ├─────────────────────────────────────────────────┤         │
+             │                              │ • TimeDistributed Dense Layer                   │         │
+             │                              │      - Classical transformation on each node   │         │
+             │                              │      - Dense(8, relu) per node                  │         │
+             │                              │ • (Optional) Feature Scaling / Normalization     │         │
+             │                              └─────────────────────────────────────────────────┘         │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │         [QUANTUM-INSPIRED BRANCH: EXPONENTIAL, PARALLEL PROCESSING]                          │
+             │         ┌──────────────────────────────────────────────────────────────┐                   │
+             │         │ [QuantumMindMapLayer]                                        │                   │
+             │         │  • Robust looping using tf.map_fn over nodes                 │                   │
+             │         │  • Branch Factor: Replicates each node to simulate             │                   │
+             │         │    exponential quantum branches (e.g., branch_factor = 3)      │                   │
+             │         │  • Aggregation: Mean reduction across branches                 │                   │
+             │         └──────────────────────────────────────────────────────────────┘                   │
+             │                         │                                                                   │
+             │                         ▼                                                                   │
+             │         ┌──────────────────────────────────────────────────────────────┐                   │
+             │         │ [QuantumLayer: Parameterized Quantum Circuit Simulation]       │                   │
+             │         │  • Data Encoding: Apply Ry rotations (angle encoding)           │                   │
+             │         │  • Parameterized RX rotations (trainable weights)               │                   │
+             │         │  • Entanglement: Chain CNOT gates across qubits                   │                   │
+             │         │  • Measurement: Measure all qubits and compute expectation        │                   │
+             │         │      - Expectation on qubit[0] (little-endian: 0 → +1, 1 → -1)       │                   │
+             │         │  • Execution: Qiskit's Aer (qasm_simulator) with 1024 shots         │                   │
+             │         └──────────────────────────────────────────────────────────────┘                   │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                            [GLOBAL AGGREGATION]                                              │
+             │                            ┌────────────────────────────────────────┐                         │
+             │                            │ • GlobalAveragePooling1D                 │                         │
+             │                            │     - Aggregates node-level outputs      │                         │
+             │                            │       into a global feature vector       │                         │
+             │                            └────────────────────────────────────────┘                         │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                            [POST-PROCESSING: CLASSICAL]                                        │
+             │                            ┌────────────────────────────────────────┐                         │
+             │                            │ • Dense Layers (e.g., Dense(16, relu))     │                         │
+             │                            │ • Output Layer                          │                         │
+             │                            │     - Dense(2, softmax) for classification│                         │
+             │                            └────────────────────────────────────────┘                         │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                            [TRAINING & EVALUATION PIPELINE]                                    │
+             │                            ┌────────────────────────────────────────────────────┐            │
+             │                            │ • Model Compilation:                                │            │
+             │                            │     - Optimizer: Adam                               │            │
+             │                            │     - Loss: Categorical Crossentropy                │            │
+             │                            │     - Metrics: Accuracy                             │            │
+             │                            │ • Training: model.fit(epochs, batch_size)           │            │
+             │                            │ • Evaluation: model.evaluate()                      │            │
+             │                            │ • Saving: Export Model (.h5 with timestamp)         │            │
+             │                            └────────────────────────────────────────────────────┘            │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                           [LOGGING & DEBUGGING]                                               │
+             │                           ┌────────────────────────────────────────┐                          │
+             │                           │ • TensorBoard Logging                    │                          │
+             │                           │     - Logs training metrics & visualizations         │               │
+             │                           │ • Advanced Debugging Tools               │                          │
+             │                           │     - Visualizations of quantum circuit outcomes       │               │
+             │                           └────────────────────────────────────────┘                          │
+             │                                                                                             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┤
+             │
+             ├─────────────────────────────────────────────────────────────────────────────────────────────┐
+             │                           [FUTURE EXTENSIONS & ENHANCEMENTS]                                    │
+             │                           ┌─────────────────────────────────────────────────┐                   │
+             │                           │ • Integration with TensorFlow Quantum (TFQ)       │                   │
+             │                           │ • Differentiable Quantum Circuit Techniques       │                   │
+             │                           │     - Parameter Shift Rules for gradients         │                   │
+             │                           │ • Advanced Hyperparameter Tuning                  │                   │
+             │                           │     - Keras Tuner Integration                     │                   │
+             │                           │ • Scalability & Production Deployment             │                   │
+             │                           │     - Model conversion (ONNX, TF Lite)            │                   │
+             │                           └─────────────────────────────────────────────────┘                   │
+             │                                                                                             │
+             └─────────────────────────────────────────────────────────────────────────────────────────────┐
+                         │                                                                              │
+                         ▼                                                                              ▼
+             [DEPLOYMENT & PRODUCTION INTEGRATION]                                             [HIGH-LEVEL OVERVIEW]
+                         ┌────────────────────────────────────────────┐                           ┌─────────────────────────────┐
+                         │ • Export Model (SavedModel, ONNX, TF Lite)   │                           │ Scale & Power:             │
+                         │ • Inference on Quantum-Inspired Data         │                           │  - Exponential parallelism │
+                         │ • Seamless integration in production         │                           │  - Robust dynamic mind maps│
+                         └────────────────────────────────────────────┘                           │  - Cutting-edge research   │
+                                                                                                    └─────────────────────────────┘
++-----------------------------------------------------------------------------------------------------------------------+
