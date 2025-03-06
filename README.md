@@ -73,3 +73,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Special thanks to all contributors and collaborators.
 - List any additional resources, tutorials, or contributors that were helpful.
 ```
+@qualcomm @microsoft @github @huggingface @Nlabs @ sgneuronlabs.space @spiralgang 
