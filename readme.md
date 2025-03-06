@@ -1,4 +1,4 @@
-# Newly improved **mindblowingly colorful and intense** README.md file complete with a vibrant mind map (using Mermaid) and an in‐depth descriptor that captures the full, expansive vision of our Hybrid Quantum Mind Map Neural Network. You can copy this text directly into a README.md file in your repository.
+Newly improved **mindblowingly colorful and intense** README.md file complete with a vibrant mind map (using Mermaid) and an in‐depth descriptor that captures the full, expansive vision of our Hybrid Quantum Mind Map Neural Network.
 
 ---
 
