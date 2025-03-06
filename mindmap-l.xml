@@ -1,0 +1,71 @@
++------------------------------------------------+
+                                   |  Hybrid Quantum Mind Map NN Model (Main)       |
+                                   +------------------------------------------------+
+                                                  │
+          ┌───────────────────────────────────────┴───────────────────────────────────────┐
+          │                                                                               │
++----------------------+                                                         +-----------------------+
+|  Data Generation     |                                                         |  Model Construction   |
+|  (Mind Map Data)     |                                                         |                       |
++----------------------+                                                         +-----------------------+
+          │                                                                               │
+          ▼                                                                               ▼
++--------------------------+                Generate Synthetic Mind Map Data               +------------------------+
+| Generate Synthetic Data  |  ──►   [Samples: (batch_size, num_nodes, node_features)]  ◄────  |  Input Layer           |
+| - Random angles in [0,π] |                & Label assignment (nonlinear function)         |  (num_nodes x features)|
++--------------------------+                                                         +------------------------+
+          │                                                                               │
+          │                                                                               ▼
+          │                                                           +--------------------------------+
+          │                                                           |  TimeDistributed Dense         |
+          │                                                           |  (Preprocessing: Dense(8, relu)) |
+          │                                                           +--------------------------------+
+          │                                                                               │
+          │                                                                               ▼
+          │                                                           +--------------------------------+
+          │                                                           |  QuantumMindMapLayer           |
+          │                                                           |  (Robust looping over nodes)   |
+          │                                                           |                                |
+          │                                                           |  • Branch Factor: Replicate    |
+          │                                                           |    each node (exponential)     |
+          │                                                           |  • Process via QuantumLayer    |
+          │                                                           +--------------------------------+
+          │                                                                               │
+          │                                                                               ▼
+          │                                                           +--------------------------------+
+          │                                                           |  QuantumLayer Integration      |
+          │                                                           |  (Per-branch processing via    |
+          │                                                           |   parameterized quantum circuit|
+          │                                                           |   simulation:                  |
+          │                                                           |       - Data encoding (Ry)     |
+          │                                                           |       - RX rotations, CNOT       |
+          │                                                           |       - Measurement &          |
+          │                                                           |         expectation            |
+          │                                                           +--------------------------------+
+          │                                                                               │
+          │                                           Aggregation (per node: average branch)│
+          │                                                                               ▼
+          └─────────────────────────────────────────────────────────────────► +--------------------------------+
+                                                                                  | Global Average Pooling 1D      |
+                                                                                  | (Across nodes aggregation)     |
+                                                                                  +--------------------------------+
+                                                                                            │
+                                                                                            ▼
+                                                                               +-------------------------------+
+                                                                               |   Dense Layers (Post-Process)  |
+                                                                               |  (E.g., Dense(16, relu))       |
+                                                                               +-------------------------------+
+                                                                                            │
+                                                                                            ▼
+                                                                               +-------------------------------+
+                                                                               |   Output Layer (Softmax)       |
+                                                                               |   (2-class classification)     |
+                                                                               +-------------------------------+
+                                                                                            │
+                                                                                            ▼
+                                                                               +-------------------------------+
+                                                                               |  Training & Evaluation         |
+                                                                               |   - model.fit()                |
+                                                                               |   - model.evaluate()           |
+                                                                               |   - Model Saving                |
+                                                                               +-------------------------------+
