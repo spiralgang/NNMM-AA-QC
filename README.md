@@ -1,7 +1,7 @@
 # NNMM-AA-QC
 Neural Network Mind Map - Agentic Agent - Quantum Computing
 
-# The entirety of the projects, starting with the "NNMM" and "NNMM-AA" repositories, have been manually crunched & updated, slowly yet surely, to provide these highly advanced methods:
+**The entirety of the projects, starting with the "NNMM" and "NNMM-AA" repositories, have been manually crunched & updated, slowly yet surely, to provide these highly advanced methods:**
 
 ### README.md
 ```markdown
